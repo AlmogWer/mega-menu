@@ -4,8 +4,9 @@ import sublinks from "./data";
 const AppContext = React.createContext();
 
 export const AppProvider = ({ children }) => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(true);
+  const data = "hello";
   const openSidebar = () => {
     setIsSidebarOpen(true);
   };
@@ -21,14 +22,15 @@ export const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={
-        (isSubmenuOpen,
+      value={{
+        isSubmenuOpen,
         isSidebarOpen,
+        data,
         openSubmenu,
         openSidebar,
         closeSubmenu,
-        closeSidebar)
-      }
+        closeSidebar,
+      }}
     >
       {children}
     </AppContext.Provider>
